@@ -1,5 +1,5 @@
 - name: Docker configure in Ec2 Machine
-  hosts: webservers
+  hosts: all
   become : true
   connection: ssh
   tasks:
@@ -17,4 +17,4 @@
     become_user: root
 
   - name: Deploy the Image and Run as Container
-    command: docker run -itd -p 8085:8081 dineshreddyramala/insure_project1:1.0
+    command: docker run -itd -p 8085:8081 dineshreddyramala/insureme_project:1.0
