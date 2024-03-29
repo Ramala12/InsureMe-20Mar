@@ -7,7 +7,7 @@ pipeline {
     stage('Git checkout') {
       steps {
          echo 'This is for cloning the gitrepo'
-         git branch: 'main', url: 'https://github.com/cbabu85/InsureMe-20Mar.git'
+         git branch: 'main', url: 'https://github.com/Ramala12/InsureMe-20Mar.git'
                           }
             }
     stage('Create a Package') {
@@ -19,12 +19,12 @@ pipeline {
 
     stage('Publish the HTML Reports') {
       steps {
-          publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '/var/lib/jenkins/workspace/Insure-Project/target/surefire-reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+          publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '/var/lib/jenkins/workspace/insureme_project/target/surefire-reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
                         }
             }
     stage('Create a Docker image from the Package Insure-Me.jar file') {
       steps {
-        sh 'docker build -t cbabu85/insure-me-app:4.0 .'
+        sh 'docker build -t dineshreddyramala/insureme_project:1.0 .'
                     }
             }
     stage('Login to Dockerhub') {
@@ -36,7 +36,7 @@ pipeline {
             }
     stage('Push the Docker image') {
       steps {
-        sh 'docker push cbabu85/insure-me-app:4.0'
+        sh 'docker push dineshreddyramala/insureme-project:1.0'
                                 }
             }
     stage('Ansbile config and Deployment') {
